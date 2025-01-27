@@ -1,7 +1,7 @@
 import mlflow
 import mlflow.sklearn
 import pandas as pd
-from sklearn.datasets import load_boston
+from sklearn.datasets import load_diabetes
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error
@@ -9,14 +9,17 @@ from sklearn.metrics import mean_squared_error
 # Set our tracking server URI for logging
 mlflow.set_tracking_uri(uri="http://127.0.0.1:5000")
 
-# Load the Boston Housing dataset
-boston = load_boston()
-X = boston.data
-y = boston.target
+# Set the experiment name; this creates it if it doesn't exist
+experiment_name = "MLOps_Lab13"
+mlflow.set_experiment(experiment_name)
+
+# Load the Diabetes dataset
+diabetes = load_diabetes()
+X = diabetes.data
+y = diabetes.target
 
 # Split the dataset into training (80%) and test (20%) sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 
 # Start a new MLflow run; this will track the entire experiment's steps
 with mlflow.start_run() as run:

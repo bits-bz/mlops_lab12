@@ -3,3 +3,5 @@ uvicorn
 mlflow
 scikit-learn
 pandas
+python-multipart
+cloudpickle

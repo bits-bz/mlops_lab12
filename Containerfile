@@ -1,4 +1,4 @@
-# Use the official Python image from the Docker Hub
+# Use the official Python image from the registry
 FROM python:3.8-slim
 
 # Set the working directory in the container
@@ -15,6 +15,3 @@ COPY . .
 
 # Command to run the FastAPI application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-
-
-
